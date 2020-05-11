@@ -31,13 +31,12 @@ public class QuantumObject : MonoBehaviour
 
         isVisible = false;
 
-        // hide quantum object under the level
-        transform.position = new Vector3(transform.position.x, transform.position.y - 100, transform.position.z);
+        gameObject.SetActive(false);
     }
 
     public void CollapseQuantumState(GameObject quantumLocationGO)
     {
-        // collaspe quantum state of the quantum object, forcing it do 'decide' if it's in the observed location or not\
+        // collapse quantum state of the quantum object, forcing it do 'decide' if it's in the observed location or not
 
         // if qunatum object is observed: do nothing
         if (isVisible)
@@ -46,17 +45,23 @@ public class QuantumObject : MonoBehaviour
         // if all locations are beeing observed: move quantum object to this location as it must be the last one
         if (quantumLocations.All(q => q.isVisible))
         {
-            Debug.Log("All locations of a group are visible!");
+            Debug.Log("All locations of a group are visible! Quantum oject should be visible now.");
 
-            gameObject.transform.position = quantumLocationGO.transform.position;
+            ShowQuantumObject(quantumLocationGO.transform.position);
         }
 
         // all other cases: move with chance
         float random = Random.Range(0f, 1f);
         if (random < appearChance)
         {
-            transform.position = quantumLocationGO.transform.position;
+            ShowQuantumObject(quantumLocationGO.transform.position);
         }
+    }
+
+    private void ShowQuantumObject(Vector3 position)
+    {
+        transform.position = position;
+        gameObject.SetActive(true);
     }
 
 }

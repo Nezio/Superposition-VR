@@ -1313,7 +1313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1505559587}
-  movementSpeed: 4
+  movementSpeed: 5
 --- !u!4 &1537232879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1738190061568172865, guid: 9b8e743699212174cbf3df2a1e734266,

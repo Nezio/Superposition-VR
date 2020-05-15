@@ -6,8 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
     public float movementSpeed = 2f;
+    public float gravity = -9.81f;
+
+    public Transform groundCheck;
+
+    [HideInInspector]
+    public Vector3 velocity;
 
     private Camera mainCamera;
+    
 
     void Start()
     {
@@ -20,17 +27,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(mainCamera.transform.forward);
         // look down to move
         if(mainCamera.transform.eulerAngles.x >= 45f && mainCamera.transform.eulerAngles.x < 90f)
         {
             MoveForward();
         }
 
+        // move on user input
         if (Input.GetKey(Tools.GetKeycode("W")) || Input.GetMouseButton(1))
         { 
             MoveForward();
         }
+
+        // falling
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
     }
 
     private void MoveForward()
@@ -38,4 +49,5 @@ public class PlayerController : MonoBehaviour
         Vector3 move = new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z).normalized * Time.deltaTime * movementSpeed;
         controller.Move(move);
     }
+
 }

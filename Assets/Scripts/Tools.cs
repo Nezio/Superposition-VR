@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public static class Tools
 {
@@ -17,5 +18,15 @@ public static class Tools
     public static KeyCode GetKeycode(string key)
     {
         return (KeyCode)System.Enum.Parse(typeof(KeyCode), key);
+    }
+
+    public static void AddEventTriggerEvent(EventTrigger trigger, EventTriggerType eventType, System.Action callback)
+    {
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        entry.eventID = eventType;
+        entry.callback.AddListener((eventData) => { callback(); });
+        //entry.callback.AddListener(callback);
+
+        trigger.triggers.Add(entry);
     }
 }

@@ -1,25 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Pickupable : MonoBehaviour
 {
     public float throwForce = 5f;
     public float maxThrowForce = 10f;
-
-    public Renderer GVRPointerRenderer;
-
-    private float maxPickupDistance = 5f;
-    private bool isWithinReach = false;
-
+    
     private GameObject player;
     private Camera mainCamera;
     private Transform hand;
     private Rigidbody rigidbody;
+    private Renderer GVRPointerRenderer;
+    private Color GVRReticleDefaultColor;
+
     private bool isHeld = false;
     private float throwStartTime;
     private bool isThrowing = false;
-    private Color GVRReticleDefaultColor;
+    private float maxPickupDistance = 5f;
+    private bool isWithinReach = false;
+    private bool isReticleOverObject = false;
+
 
     private void Start()
     {
@@ -41,9 +43,24 @@ public class Pickupable : MonoBehaviour
         GVRPointerRenderer = GameObject.FindGameObjectWithTag("GVRPointer").GetComponent<Renderer>();
         GVRReticleDefaultColor = GVRPointerRenderer.material.color;
 
+        EventTrigger eventTrigger = gameObject.GetComponent<EventTrigger>();
+        Tools.AddEventTriggerEvent(eventTrigger, EventTriggerType.PointerDown, PointerDownEvent);
+        Tools.AddEventTriggerEvent(eventTrigger, EventTriggerType.PointerUp, PointerUpEvent);
+        Tools.AddEventTriggerEvent(eventTrigger, EventTriggerType.PointerEnter, PointerEnterEvent);
+        Tools.AddEventTriggerEvent(eventTrigger, EventTriggerType.PointerExit, PointerExitEvent);
+
     }
 
-    private void OnMouseDown()
+    private void Update()
+    {
+        if(isReticleOverObject)
+        {
+            PointerOverEvent();
+        }
+    }
+
+
+    public void PointerDownEvent()
     {
         Debug.Log("click");
 
@@ -60,19 +77,32 @@ public class Pickupable : MonoBehaviour
                 PickUp();
             }
         }
-
+    
     }
 
-    private void OnMouseUp()
+    private void PointerUpEvent()
     {
-        // throw inly if object is held and throwing has started
+        // throw only if object is held and throwing has started
         if(isHeld && isThrowing)
         {
             Throw();
         }
     }
 
-    private void OnMouseOver()
+    private void PointerEnterEvent()
+    {
+        isReticleOverObject = true;
+    }
+
+    private void PointerExitEvent()
+    {
+        isReticleOverObject = false;
+
+        // reset visual cue
+        SetVisualCueForInReach();
+    }
+
+    private void PointerOverEvent()
     {
         // by default: not reachable
         isWithinReach = false;
@@ -82,7 +112,7 @@ public class Pickupable : MonoBehaviour
         Vector3 deltaPosition = transform.position - player.transform.position;
         float distance = deltaPosition.magnitude;
 
-        if(distance <= maxPickupDistance)
+        if (distance <= maxPickupDistance)
         {
             isWithinReach = true;
 
@@ -92,16 +122,11 @@ public class Pickupable : MonoBehaviour
 
     }
 
-    private void OnMouseExit()
-    {
-        // reset visual cue
-        SetVisualCueForInReach();
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         Drop();
     }
+
 
     private void PickUp()
     {

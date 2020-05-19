@@ -25,8 +25,6 @@ public static class Tools
         EventTrigger.Entry entry = new EventTrigger.Entry();
         entry.eventID = eventType;
         entry.callback.AddListener((eventData) => { callback(); });
-        //entry.callback.AddListener(callback);
-
         trigger.triggers.Add(entry);
     }
 }

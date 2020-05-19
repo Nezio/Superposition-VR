@@ -16,7 +16,7 @@ public class QuantumObject : MonoBehaviour
         //if (Camera.current && Camera.current.name == "SceneCamera")
         //    return;
 
-        Debug.Log(gameObject.name + " became visible (•_•)");
+        //Debug.Log(gameObject.name + " became visible (•_•)");
 
         isVisible = true;
     }
@@ -27,7 +27,7 @@ public class QuantumObject : MonoBehaviour
         //if (Camera.current && Camera.current.name == "SceneCamera")
         //    return;
 
-        Debug.Log(gameObject.name + " became invisible");
+        //Debug.Log(gameObject.name + " became invisible");
 
         isVisible = false;
 
@@ -45,7 +45,7 @@ public class QuantumObject : MonoBehaviour
         // if all locations are beeing observed: move quantum object to this location as it must be the last one
         if (quantumLocations.All(q => q.isVisible))
         {
-            Debug.Log("All locations of a group are visible! Quantum oject should be visible now.");
+            //Debug.Log("All locations of a group are visible! Quantum oject should be visible now.");
 
             ShowQuantumObject(quantumLocationGO.transform.position);
         }

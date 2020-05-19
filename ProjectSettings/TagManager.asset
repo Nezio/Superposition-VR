@@ -6,6 +6,7 @@ TagManager:
   tags:
   - QuantumObject
   - GVRPointer
+  - HelperCube
   layers:
   - Default
   - TransparentFX

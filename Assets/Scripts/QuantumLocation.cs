@@ -64,7 +64,7 @@ public class QuantumLocation : MonoBehaviour
         //if (Camera.current && Camera.current.name == "SceneCamera")
         //    return;
 
-        Debug.Log(gameObject.name + " became visible (•_•)");
+        //Debug.Log(gameObject.name + " became visible (•_•)");
 
         isVisible = true;
 
@@ -77,7 +77,7 @@ public class QuantumLocation : MonoBehaviour
         //if (Camera.current && Camera.current.name == "SceneCamera")
         //    return;
 
-        Debug.Log(gameObject.name + " became invisible");
+        //Debug.Log(gameObject.name + " became invisible");
 
         isVisible = false;
     }

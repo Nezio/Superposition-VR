@@ -25,13 +25,12 @@ public class Pickupable : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("Player");
         mainCamera = Camera.main;
 
         // initialize hand gameobject
         foreach (Transform child in mainCamera.transform)
         {
-            Debug.Log(child.name);
             if (child.name == "Hand")
             {
                 hand = child;
@@ -62,8 +61,6 @@ public class Pickupable : MonoBehaviour
 
     public void PointerDownEvent()
     {
-        Debug.Log("click");
-
         if (isHeld)
         {
             // start throwing
@@ -152,7 +149,6 @@ public class Pickupable : MonoBehaviour
 
         float throwTime = Time.time - throwStartTime;
         float forceMultiplier = Mathf.Min(throwTime * throwForce, maxThrowForce);
-        Debug.Log(forceMultiplier);
         rigidbody.AddForce(mainCamera.transform.forward*forceMultiplier, ForceMode.Impulse);
 
         isThrowing = false;

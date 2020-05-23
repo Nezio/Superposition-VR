@@ -9,6 +9,7 @@ public class PressurePlate : MonoBehaviour
 
     private UnityEvent actions;
     private GameObject pressurePlate;
+    private Signal signal;
 
     private bool hasPressure = false;
     private bool isPressed = false;
@@ -23,6 +24,7 @@ public class PressurePlate : MonoBehaviour
         pressurePlate = transform.parent.gameObject;
         defaultY = pressurePlate.transform.localPosition.y;
         actions = transform.parent.parent.gameObject.GetComponent<PressurePlateActions>().actions;
+        signal = transform.parent.parent.gameObject.GetComponent<Signal>();
     }
 
     private void Update()
@@ -40,10 +42,21 @@ public class PressurePlate : MonoBehaviour
             float newPos = Mathf.Min(pressurePlate.transform.localPosition.y + offset, defaultY);
             pressurePlate.transform.localPosition = new Vector3(pressurePlate.transform.localPosition.x, newPos, pressurePlate.transform.localPosition.z);
         }
+
+        // set the signal
+        if(isPressed)
+        {
+            signal.SetSignal();
+        }
+        else
+        {
+            signal.ResetSignal();
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
+        // if object that stepped on the button is allowed to press it
         if (allowedTags.Contains(other.tag))
         {
             hasPressure = true;
@@ -51,7 +64,7 @@ public class PressurePlate : MonoBehaviour
             // if not pressed all the way, press the plate down
             if(pressurePlate.transform.localPosition.y > minY)
             {
-                float offset = 0.1f * Time.deltaTime;
+                float offset = pressSpeed * Time.deltaTime;
                 float newPos = Mathf.Max(pressurePlate.transform.localPosition.y - offset, minY);
                 pressurePlate.transform.localPosition = new Vector3(pressurePlate.transform.localPosition.x, newPos, pressurePlate.transform.localPosition.z);            
             }

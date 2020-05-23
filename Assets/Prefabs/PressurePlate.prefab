@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3315358046990685322}
   - component: {fileID: 4570247922830862297}
+  - component: {fileID: -6171054430165930724}
   m_Layer: 0
   m_Name: PressurePlate
   m_TagString: Untagged
@@ -45,6 +46,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145b5b9a254a8504eb7aaf13244a7f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actions:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-6171054430165930724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3315358046990685321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c19410d7afb1404fb0a91650a0afd7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 0
 --- !u!1 &3315358047106538489
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,9 +216,6 @@ MonoBehaviour:
   allowedTags:
   - Player
   - HelperCube
-  actions:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &3315358048738191603
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // look down to move
-        if(mainCamera.transform.eulerAngles.x >= 45f && mainCamera.transform.eulerAngles.x < 90f)
+        if(mainCamera.transform.eulerAngles.x >= 45f && mainCamera.transform.eulerAngles.x < 77f)
         {
             MoveForward();
         }

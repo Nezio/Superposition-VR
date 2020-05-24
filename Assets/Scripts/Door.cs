@@ -6,12 +6,12 @@ public class Door : MonoBehaviour
 {
     public Signal signal;
 
+    public float openDistance = 1.7f;
+    public float openSpeed = 2f;
+
     private GameObject DoorLeft;
     private GameObject DoorRight;
-
-    private float maxX = 1.7f;
     private float defaultX;
-    private float openSpeed = 2f;
 
     private void Start()
     {
@@ -38,18 +38,18 @@ public class Door : MonoBehaviour
         if(signal.isActive)
         {
             // open left door
-            if (DoorLeft.transform.localPosition.x < maxX)
+            if (DoorLeft.transform.localPosition.x < openDistance)
             {
                 float offset = openSpeed * Time.deltaTime;
-                float newPos = Mathf.Min(DoorLeft.transform.localPosition.x + offset, maxX);
+                float newPos = Mathf.Min(DoorLeft.transform.localPosition.x + offset, openDistance);
                 DoorLeft.transform.localPosition = new Vector3(newPos, DoorLeft.transform.localPosition.y, DoorLeft.transform.localPosition.z);
             }
 
             // open right door
-            if (DoorRight.transform.localPosition.x > -maxX)
+            if (DoorRight.transform.localPosition.x > -openDistance)
             {
                 float offset = openSpeed * Time.deltaTime;
-                float newPos = Mathf.Max(DoorRight.transform.localPosition.x - offset, -maxX);
+                float newPos = Mathf.Max(DoorRight.transform.localPosition.x - offset, -openDistance);
                 DoorRight.transform.localPosition = new Vector3(newPos, DoorRight.transform.localPosition.y, DoorRight.transform.localPosition.z);
             }
 

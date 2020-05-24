@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Signal : MonoBehaviour
 {
-    public bool isActive = false;
+    public bool isActive { get; private set; }
+
+    private void Start()
+    {
+        isActive = false;
+    }
 
     public void SetSignal()
     {

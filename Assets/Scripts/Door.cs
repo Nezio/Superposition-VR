@@ -35,7 +35,7 @@ public class Door : MonoBehaviour
 
     private void Update()
     {
-        if(signal.isActive)
+        if(signal != null && signal.isActive)
         {
             // open left door
             if (DoorLeft.transform.localPosition.x < openDistance)

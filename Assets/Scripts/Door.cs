@@ -6,7 +6,7 @@ public class Door : MonoBehaviour
 {
     public Signal signal;
 
-    public float openDistance = 1.7f;
+    public float openDistance = 1.8f;
     public float openSpeed = 2f;
 
     private GameObject DoorLeft;

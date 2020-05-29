@@ -7,23 +7,47 @@ public class UIButtonActions : MonoBehaviour
 {
     public Color defaultColor;
     public Color hoverColor;
+    public Color disabledColor;
 
     private Renderer renderer;
+    private bool isEnabled = true;
 
     private void Start()
     {
+        // initialize
         renderer = gameObject.GetComponent<Renderer>();
-        renderer.material.color = defaultColor;
+
+        SetColor(defaultColor);
+
+        // set level chooser buttons based on player progress
+        int maxLevelPlayed = PlayerPrefs.GetInt("maxLevelPlayed", 1);
+        if (transform.parent != null && transform.parent.name == "LevelChooseButtons" && !gameObject.name.ToLower().Contains("tutorial"))
+        {
+            int buttonLevelNumber = Tools.GetLevelNumber(gameObject.name);
+
+            if (buttonLevelNumber > maxLevelPlayed)
+            {
+                gameObject.GetComponent<UIButtonActions>().SetColor(disabledColor);
+                isEnabled = false;
+            }
+
+        }
     }
 
     public void PointerEnter()
     {
-        SetColor(hoverColor);
+        if (isEnabled)
+        {
+            SetColor(hoverColor);
+        }
     }
 
     public void PointerExit()
     {
-        SetColor(defaultColor);
+        if (isEnabled)
+        {
+            SetColor(defaultColor);
+        }
     }
 
     public void Exit()
@@ -34,16 +58,26 @@ public class UIButtonActions : MonoBehaviour
 
     public void LoadScene(string scene)
     {
-        SceneManager.LoadScene(scene);
+        if (isEnabled)
+        {
+            SceneManager.LoadScene(scene);
+        }
     }
 
-    private void SetColor(Color color)
+    public void SetColor(Color color)
     {
-        renderer.material.color = color;
+        if (isEnabled)
+        {
+            renderer.material.color = color;
+            renderer.material.SetColor("_EmissionColor", color);
+        }
+
     }
 
     public void PlayerExit()
     {
+        // the floating button under the player
+
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
             // exit
@@ -56,11 +90,18 @@ public class UIButtonActions : MonoBehaviour
         }
     }
 
-
-
-    /*public void TeleportPlayer()
+    public void Continue()
     {
-        GameObject.FindGameObjectWithTag("Player").transform.position = gameObject.transform.position;
-    }*/
+        if (isEnabled)
+        {
+            string lastLevelPlayed = PlayerPrefs.GetString("lastLevelPlayed", "Level01"); // change this to tutorial? disable button on new game?
+            LoadScene(lastLevelPlayed);
+        }
+    }
+
+    public void ResetPlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 
 }

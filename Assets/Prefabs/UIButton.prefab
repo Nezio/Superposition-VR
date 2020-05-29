@@ -166,8 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f447497404c4140840ee58a6200cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultColor: {r: 0.06069775, g: 0.11545811, b: 0.41509432, a: 0}
-  hoverColor: {r: 0.11844337, g: 0.22899061, b: 0.83699995, a: 0}
+  defaultColor: {r: 0.080322154, g: 0.3575842, b: 0.8962264, a: 0}
+  hoverColor: {r: 0.23400003, g: 0.49547127, b: 1, a: 0}
+  disabledColor: {r: 0.213, g: 0.213, b: 0.213, a: 0}
 --- !u!1 &8012450215355569695
 GameObject:
   m_ObjectHideFlags: 0

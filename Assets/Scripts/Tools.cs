@@ -27,4 +27,14 @@ public static class Tools
         entry.callback.AddListener((eventData) => { callback(); });
         trigger.triggers.Add(entry);
     }
+
+    public static int GetLevelNumber(string level)
+    {
+        int digit1 = (int)char.GetNumericValue(level[level.Length - 2]);
+        int digit2 = (int)char.GetNumericValue(level[level.Length - 1]);
+
+        int levelNumber = digit1 * 10 + digit2;
+
+        return levelNumber;
+    }
 }

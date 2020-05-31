@@ -33,8 +33,8 @@ public class PlayerController : MonoBehaviour
             MoveForward();
         }
 
-        // move on user input
-        if (Input.GetKey(Tools.GetKeycode("W")) || Input.GetMouseButton(1))
+        // move on user input (W, RMB or back button on Android (this is to enable RMB on Android when mouse is connected))
+        if (Input.GetKey(Tools.GetKeycode("W")) || Input.GetMouseButton(1) || Input.GetKey(KeyCode.Escape))
         { 
             MoveForward();
         }

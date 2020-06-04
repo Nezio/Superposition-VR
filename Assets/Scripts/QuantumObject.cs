@@ -10,12 +10,14 @@ public class QuantumObject : MonoBehaviour
 
     private bool isVisible = false;
 
+    private void Start()
+    {
+        // start invisible
+        OnBecameInvisible();
+    }
+
     void OnBecameVisible()
     {
-        // don't do anything for scene camera
-        //if (Camera.current && Camera.current.name == "SceneCamera")
-        //    return;
-
         //Debug.Log(gameObject.name + " became visible (•_•)");
 
         isVisible = true;
@@ -23,9 +25,6 @@ public class QuantumObject : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        // don't do anything for scene camera
-        //if (Camera.current && Camera.current.name == "SceneCamera")
-        //    return;
 
         //Debug.Log(gameObject.name + " became invisible");
 
@@ -38,12 +37,12 @@ public class QuantumObject : MonoBehaviour
     {
         // collapse quantum state of the quantum object, forcing it do 'decide' if it's in the observed location or not
 
-        // if qunatum object is observed: do nothing
+        // if quantum object is observed: do nothing
         if (isVisible)
             return;
 
-        // if all locations are beeing observed: move quantum object to this location as it must be the last one
-        if (quantumLocations.All(q => q.isVisible))
+        // if all locations are beeing observed: move quantum object to this location as it must be the last one (but not if there is only one quantum location)
+        if (quantumLocations.Count > 1 && quantumLocations.All(q => q.isVisible))
         {
             //Debug.Log("All locations of a group are visible! Quantum oject should be visible now.");
 

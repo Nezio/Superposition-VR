@@ -28,44 +28,8 @@ public class QuantumLocation : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        // detect if object is visible, taking it's shadows in account
-        /*if (objectRenderer.isVisible)
-        {
-            Debug.Log("Object is visible");
-        }
-        else
-        {
-            Debug.Log("Object is no longer visible");
-        }*/
-
-        // detect if object is visible, ignore shadows
-        /*if (IsVisibleFrom(Camera.main))
-        {
-            Debug.Log("Visible");
-        }
-        else
-        {
-            Debug.Log("Not visible");
-        }*/
-    }
-
-    /*private bool IsVisibleFrom(Camera camera)
-    {
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
-
-        return GeometryUtility.TestPlanesAABB(planes, objectRenderer.bounds);
-    }*/
-
     void OnBecameVisible()
     {
-        // don't do anything for scene camera
-        //if (Camera.current && Camera.current.name == "SceneCamera")
-        //    return;
-
-        //Debug.Log(gameObject.name + " became visible (•_•)");
-
         isVisible = true;
 
         quantumObject.CollapseQuantumState(gameObject);
@@ -73,12 +37,6 @@ public class QuantumLocation : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        // don't do anything for scene camera
-        //if (Camera.current && Camera.current.name == "SceneCamera")
-        //    return;
-
-        //Debug.Log(gameObject.name + " became invisible");
-
         isVisible = false;
     }
 }

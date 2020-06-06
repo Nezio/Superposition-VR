@@ -39,4 +39,6 @@ public class QuantumLocation : MonoBehaviour
     {
         isVisible = false;
     }
+
+
 }

@@ -41,6 +41,12 @@ public class QuantumObject : MonoBehaviour
         if (isVisible)
             return;
 
+        // reminder in case of exception
+        if (quantumLocations.Any(q => q == null))
+        {
+            Debug.Log("Did you forget to set the quantum locations in the quantum object?");
+        }
+
         // if all locations are beeing observed: move quantum object to this location as it must be the last one (but not if there is only one quantum location)
         if (quantumLocations.Count > 1 && quantumLocations.All(q => q.isVisible))
         {

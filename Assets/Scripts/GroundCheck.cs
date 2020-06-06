@@ -8,7 +8,7 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag != "Player")
+        if (other.tag != "Player" && other.tag != "QuantumLocation")
         {
             player.velocity = Vector3.zero;
         }

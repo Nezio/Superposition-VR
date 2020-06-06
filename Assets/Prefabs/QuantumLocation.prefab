@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1738190061568172866}
   m_Layer: 0
   m_Name: QuantumLocation
-  m_TagString: Untagged
+  m_TagString: QuantumLocation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1738190061568172864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.05, y: 3, z: 2.05}
+  m_LocalScale: {x: 2, y: 3, z: 2}
   m_Children:
   - {fileID: 3967242215541927475}
   m_Father: {fileID: 0}
@@ -121,12 +121,12 @@ GameObject:
   - component: {fileID: 1168299009972927233}
   - component: {fileID: 3682134048202316090}
   m_Layer: 0
-  m_Name: Model
+  m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3967242215541927475
 Transform:
   m_ObjectHideFlags: 0

@@ -9,10 +9,13 @@ public class QuantumLocation : MonoBehaviour
 
     [HideInInspector]
     public bool isVisible = false;
+    [HideInInspector]
+    public int numberOfPlayerTaggedObjectsInLocation = 0;
 
     private Renderer objectRenderer;
     private GameObject quantumObjectGO;
     private QuantumObject quantumObject;
+    
 
     void Start()
     {
@@ -26,19 +29,48 @@ public class QuantumLocation : MonoBehaviour
                 quantumObject = quantumObjectGO.GetComponent<QuantumObject>();
             }
         }
+
     }
 
     void OnBecameVisible()
     {
         isVisible = true;
 
-        quantumObject.CollapseQuantumState(gameObject);
+        // only collapse quantum state if player is not touching or inside the quantum location
+        if(numberOfPlayerTaggedObjectsInLocation <= 0)
+        {
+            quantumObject.CollapseQuantumState(gameObject);
+        }
+        
     }
 
     void OnBecameInvisible()
     {
         isVisible = false;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            numberOfPlayerTaggedObjectsInLocation++;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            numberOfPlayerTaggedObjectsInLocation--;
+        }
+
+        if (numberOfPlayerTaggedObjectsInLocation <= 0 && gameObject == quantumObject.currentQuantumLocation)
+        {
+            quantumObjectGO.SetActive(false);
+        }
+
+    }
+
 
 
 }

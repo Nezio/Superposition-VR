@@ -711,7 +711,7 @@ PrefabInstance:
     - target: {fileID: 1866896713760538802, guid: 39f6b58643f56a44e9c50253c9f9ccbe,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 129
+      value: 131
       objectReference: {fileID: 0}
     - target: {fileID: 1866896713760538802, guid: 39f6b58643f56a44e9c50253c9f9ccbe,
         type: 3}
@@ -736,8 +736,8 @@ PrefabInstance:
     - target: {fileID: 1866896713760538802, guid: 39f6b58643f56a44e9c50253c9f9ccbe,
         type: 3}
       propertyPath: m_text
-      value: 'To return to the main menu from any level or exit the game if you are
-        already in the main menu: use the exit button at your feet.'
+      value: 'To return to the main menu from any level or exit the game (if you
+        are already in the main menu): use the exit button at your feet.'
       objectReference: {fileID: 0}
     - target: {fileID: 1866896713760538812, guid: 39f6b58643f56a44e9c50253c9f9ccbe,
         type: 3}
@@ -7609,7 +7609,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: f70b9fcc2d41f05418259a75162f18aa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -536,22 +536,22 @@ PrefabInstance:
     - target: {fileID: 1866896713760538802, guid: 39f6b58643f56a44e9c50253c9f9ccbe,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 203
+      value: 249
       objectReference: {fileID: 0}
     - target: {fileID: 1866896713760538802, guid: 39f6b58643f56a44e9c50253c9f9ccbe,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 41
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 1866896713760538802, guid: 39f6b58643f56a44e9c50253c9f9ccbe,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 42
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 1866896713760538802, guid: 39f6b58643f56a44e9c50253c9f9ccbe,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1866896713760538802, guid: 39f6b58643f56a44e9c50253c9f9ccbe,
         type: 3}
@@ -561,9 +561,10 @@ PrefabInstance:
     - target: {fileID: 1866896713760538802, guid: 39f6b58643f56a44e9c50253c9f9ccbe,
         type: 3}
       propertyPath: m_text
-      value: When you are not looking at it is in a state of superposition. It both
-        exists and it doesn't. Only when you look at it, it decides whether it exists
-        or not. Try to look away and back at it several times.
+      value: When you are not looking at the quantum object it is in a state of superposition.
+        It both exists and  doesn't at the same time. However, observation forces
+        it to decide whether it exists or not. Try to look away and back at the object
+        several times.
       objectReference: {fileID: 0}
     - target: {fileID: 1866896713760538802, guid: 39f6b58643f56a44e9c50253c9f9ccbe,
         type: 3}
@@ -573,12 +574,12 @@ PrefabInstance:
     - target: {fileID: 1866896713760538802, guid: 39f6b58643f56a44e9c50253c9f9ccbe,
         type: 3}
       propertyPath: m_fontSize
-      value: 1.7
+      value: 1.55
       objectReference: {fileID: 0}
     - target: {fileID: 1866896713760538802, guid: 39f6b58643f56a44e9c50253c9f9ccbe,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 1.7
+      value: 1.55
       objectReference: {fileID: 0}
     - target: {fileID: 1866896713760538812, guid: 39f6b58643f56a44e9c50253c9f9ccbe,
         type: 3}
@@ -856,7 +857,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18874
+  m_Name: pb_Mesh36616
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10525,7 +10526,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: f70b9fcc2d41f05418259a75162f18aa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

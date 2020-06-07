@@ -121,6 +121,9 @@ public class Pickupable : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
+        Debug.Log(collision.other.name);
+
         Drop();
     }
 

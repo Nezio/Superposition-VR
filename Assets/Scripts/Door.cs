@@ -13,6 +13,10 @@ public class Door : MonoBehaviour
     private GameObject DoorRight;
     private float defaultX;
 
+    private bool doorOpenSoundPlayed = false;
+    private bool doorCloseSoundPlayed = true;
+
+
     private void Start()
     {
         // get door sides
@@ -53,6 +57,14 @@ public class Door : MonoBehaviour
                 DoorRight.transform.localPosition = new Vector3(newPos, DoorRight.transform.localPosition.y, DoorRight.transform.localPosition.z);
             }
 
+            // play audio
+            if (!AudioManager.instance.IsPlaying("DoorOpen") && !doorOpenSoundPlayed)
+            {
+                AudioManager.instance.PlayOneShot("DoorOpen");
+                doorOpenSoundPlayed = true;
+            }
+            doorCloseSoundPlayed = false;
+
         }
         else
         {
@@ -71,6 +83,14 @@ public class Door : MonoBehaviour
                 float newPos = Mathf.Min(DoorRight.transform.localPosition.x + offset, -defaultX);
                 DoorRight.transform.localPosition = new Vector3(newPos, DoorRight.transform.localPosition.y, DoorRight.transform.localPosition.z);
             }
+
+            // play audio
+            if (!AudioManager.instance.IsPlaying("DoorClose") && !doorCloseSoundPlayed)
+            {
+                AudioManager.instance.Play("DoorClose");
+                doorCloseSoundPlayed = true;
+            }
+            doorOpenSoundPlayed = false;
 
         }
     }

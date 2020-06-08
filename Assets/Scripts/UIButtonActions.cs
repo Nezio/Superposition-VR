@@ -40,6 +40,9 @@ public class UIButtonActions : MonoBehaviour
         {
             SetColor(hoverColor);
         }
+
+        AudioManager.instance.PlayOneShot("UIButtonHover");
+
     }
 
     public void PointerExit()
@@ -102,6 +105,11 @@ public class UIButtonActions : MonoBehaviour
     public void ResetPlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
+    }
+
+    public void PlayClickSound()
+    {
+        AudioManager.instance.PlayOneShot("UIButtonClick");
     }
 
 }

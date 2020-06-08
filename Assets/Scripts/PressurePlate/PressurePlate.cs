@@ -33,6 +33,8 @@ public class PressurePlate : MonoBehaviour
         {
             actions.Invoke();
             alreadyPressed = true;
+
+            AudioManager.instance.PlayOneShot("PressurePlateActivate");
         }
 
         // if not already all the way up, restore it

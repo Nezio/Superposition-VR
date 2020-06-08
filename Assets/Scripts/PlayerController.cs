@@ -48,6 +48,23 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 move = new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z).normalized * Time.deltaTime * movementSpeed;
         controller.Move(move);
+
+        // play audio if no other footstep sound is playing
+        bool footstepSoundPlaying = false;
+        int numberOfFootstepSounds = 5;
+        for (int i = 1; i < numberOfFootstepSounds + 1; i++)
+        {
+            if (AudioManager.instance.IsPlaying("Footstep" + i))
+            {
+                footstepSoundPlaying = true;
+            }
+        }
+        if (!footstepSoundPlaying)
+        {
+            AudioManager.instance.PlayOneShot("Footstep" + Random.Range(1, numberOfFootstepSounds + 1));
+        }
+        
+
     }
 
 }

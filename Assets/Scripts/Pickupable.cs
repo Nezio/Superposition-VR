@@ -122,6 +122,10 @@ public class Pickupable : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Drop();
+
+        // play audio if no other collision sound is playing
+        int numberOfCollideSounds = 3;
+        AudioManager.instance.PlayOneShot("CubeCollide" + Random.Range(1, numberOfCollideSounds + 1));
     }
 
 

@@ -112,4 +112,18 @@ public class UIButtonActions : MonoBehaviour
         AudioManager.instance.PlayOneShot("UIButtonClick");
     }
 
+    public void EasterEgg()
+    {
+        GameObject lighting = GameObject.Find("Lighting");
+        if (lighting)
+        {
+            Color newColor = Tools.Color0to1(Random.Range(0, 255), Random.Range(0, 255), Random.Range(0, 255));
+
+            foreach (Transform child in lighting.transform)
+            {
+                child.gameObject.GetComponent<Light>().color = newColor;
+            }
+        }
+    }
+
 }

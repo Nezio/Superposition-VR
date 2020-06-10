@@ -10,8 +10,5 @@ public class MouseLook : MonoBehaviour
     {
         float mouseX = Input.GetAxis("Mouse X");
         player.transform.Rotate(Vector3.up * mouseX);
-
-        Debug.Log(mouseX);
-
     }
 }

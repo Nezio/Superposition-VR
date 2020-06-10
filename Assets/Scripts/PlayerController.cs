@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+
+        mainCamera.transform.rotation = Quaternion.identity;
     }
 
     private float maxX = 0;
